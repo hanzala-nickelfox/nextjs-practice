@@ -12,6 +12,11 @@ export const defaultTheme = {
     },
     background: {
       default: "#FFFFFF"
+    },
+    text: {
+      primary: "#222222",
+      secondary: "#FD2B88",
+      disabled: "#F5F8F2"
     }
   },
   typography: {

@@ -2,6 +2,7 @@
 import React from "react"
 import HomeIcon from "@mui/icons-material/Dashboard"
 import SettingsIcon from "@mui/icons-material/Settings"
+import ListIcon from "@mui/icons-material/List"
 
 class MenuPath {
   constructor(title, icon, route, pageParams = {}, alias = null) {
@@ -16,5 +17,5 @@ class MenuPath {
 export const DashboardMenus = [
   new MenuPath("Dahboard", <HomeIcon />, "/user/dashboard"),
   new MenuPath("Settings", <SettingsIcon />, "/user/settings"),
-  new MenuPath("Orders", <SettingsIcon />, "/user/orders")
+  new MenuPath("Orders", <ListIcon />, "/user/orders")
 ]

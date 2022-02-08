@@ -67,12 +67,13 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }))
 
 export default function PrivateLayout({ children }) {
-  const { replace, push } = useRouter()
+  const { replace, push, pathname } = useRouter()
   const theme = useTheme()
   const [open, setOpen] = React.useState(true)
   const session = getSession("user-token")
 
   React.useEffect(() => {
+    console.log(theme.palette)
     if (!session) {
       replace("/auth/login", "/auth/login")
     }
@@ -105,7 +106,7 @@ export default function PrivateLayout({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h5" noWrap component="div">
-            React Scaffolding
+            NextJs Scaffolding
           </Typography>
         </Toolbar>
       </AppBar>
@@ -135,12 +136,34 @@ export default function PrivateLayout({ children }) {
         <List>
           {DashboardMenus.map((item) => (
             <ListItem
+              color="primary"
               button
               key={item.alias}
               onClick={() => navigate(item.route, item.params)}
+              style={{
+                backgroundColor: pathname.includes(item.route)
+                  ? theme.palette.primary.main
+                  : theme.palette.background.default
+              }}
             >
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.title} />
+              <ListItemIcon
+                style={{
+                  color: pathname.includes(item.route)
+                    ? theme.palette.text.disabled
+                    : theme.palette.text.primary
+                }}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.title}
+                color="primary"
+                style={{
+                  color: pathname.includes(item.route)
+                    ? theme.palette.text.disabled
+                    : theme.palette.text.primary
+                }}
+              />
             </ListItem>
           ))}
         </List>
