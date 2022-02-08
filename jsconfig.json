@@ -10,7 +10,8 @@
       "@network/*": ["src/network/*"],
       "@layouts/*": ["src/layouts/*"],
       "@session/*": ["src/session_manager/*"],
-      "@themes/*": ["src/themes/*"]
+      "@themes/*": ["src/themes/*"],
+      "@constants/*": ["src/constants/*"],
     }
   }
 }
