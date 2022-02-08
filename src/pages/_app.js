@@ -3,10 +3,10 @@ import "../styles/globals.css"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
 import { useRouter } from "next/router"
 import { Provider as ReduxProvider } from "react-redux"
-import PublicLayout from "../layouts/publicLayout"
-import PrivateLayout from "../layouts/privateLayout"
-import { defaultTheme } from "../themes/defaultTheme"
-import store from "../redux/store"
+import PublicLayout from "@layouts/publicLayout"
+import PrivateLayout from "@layouts/privateLayout"
+import { defaultTheme } from "@themes/defaultTheme"
+import store from "@redux/store"
 
 function MyApp({ Component, pageProps }) {
   const currentTheme = createTheme(defaultTheme)

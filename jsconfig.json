@@ -8,8 +8,9 @@
       "@helpers/*": ["src/helpers/*"],
       "@redux/*": ["src/redux/*"],
       "@network/*": ["src/network/*"],
-      "@layouts/*": ["src/layout/*"],
-      "@session/*": ["src/session_manager/*"]
+      "@layouts/*": ["src/layouts/*"],
+      "@session/*": ["src/session_manager/*"],
+      "@themes/*": ["src/themes/*"]
     }
   }
 }

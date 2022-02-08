@@ -1,13 +1,18 @@
-import React from 'react'
-import Button from '@mui/material/Button';
-import { setSession } from '../../../session_manager/cookie';
-import AppDispatcher from '../../../redux/dispatchers/appDispatcher';
+import React from "react"
+import Button from "@mui/material/Button"
+import { setSession } from "@session/cookie"
+import AppDispatcher from "@redux/dispatchers/appDispatcher"
+import { useRouter } from "next/router"
 
 function Login() {
+  const router = useRouter()
 
   const loginAction = () => {
     setSession("user-token", "4739479nm,bfdshf9832rgh32erbdslfhp93")
-    AppDispatcher.setUserLoggedIn({token: "4739479nm,bfdshf9832rgh32erbdslfhp93"})
+    AppDispatcher.setUserLoggedIn({
+      token: "4739479nm,bfdshf9832rgh32erbdslfhp93"
+    })
+    router.replace("/user/dashboard")
   }
 
   return (
