@@ -3,6 +3,8 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import { useRouter } from "next/router"
 import { getSession } from "@session/cookie"
+import Image from "next/image"
+import ImagePath from "../../public/images/placeholders/onboardingng.jpg"
 
 export default function PublicLayout({ children }) {
   const { replace } = useRouter()
@@ -18,7 +20,10 @@ export default function PublicLayout({ children }) {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={7}>
-          <h2>Some placeholder</h2>
+          <Image
+            src={ImagePath}
+            alt="PlaceholderImage"
+          />
         </Grid>
         <Grid item xs={5}>
           {children}
