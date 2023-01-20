@@ -48,10 +48,7 @@ function Index() {
                 )
               } else {
                 return (
-                  <Button
-                    key={item.link}
-                    variant="outlined"
-                    onClick={navigate}>
+                  <Button key={item.link} variant="outlined" onClick={navigate}>
                     {isLoggedIn ? "Go to Dashboard" : "Login"}
                   </Button>
                 )
