@@ -1,9 +1,10 @@
 // Higher Order Class to make all network calls
-import Stores from "@local/redux/store"
 import { HTTP_METHODS } from "./httpMethods"
 import { ServerConfig } from "./serverConfig"
 import { Response } from "./responseParser"
 import { refreshToken } from "./tokenRefresher"
+import { Cookies } from "react-cookie"
+import { CookieKeys } from "@local/constants/cookieKeys"
 
 // ********************
 // Create a new instance of this Network class and make api call
@@ -37,7 +38,9 @@ export class NetworkManager {
     let data = []
     let success = false
     let code = 200
-    const state = Stores.getState().app
+
+    const cookie = new Cookies()
+    const authToken = cookie.get(CookieKeys.Auth)
 
     try {
       const url = `${this.baseUrl}/${this.endPointVersion}${this.endpoint}${this.requestParams}`
@@ -46,8 +49,9 @@ export class NetworkManager {
         method: this.method
       }
 
-      if (header && state.token) {
-        this.headers.token = state.token ?? ""
+      if (header && authToken) {
+        this.headers.token = authToken
+        // this.headers["Authorization"] = `Bearer ${authToken}` ?? "";
       }
 
       this.headers["Accept-Language"] = "en"
@@ -68,7 +72,7 @@ export class NetworkManager {
 
       if (code === 401) {
         // refresh the token
-        await refreshToken(state.token)
+        await refreshToken(authToken)
         // pass the control back to network manager
         const refRes = await this.httpRequest(header)
         // re-assign response
@@ -83,6 +87,7 @@ export class NetworkManager {
       }
     } catch (err) {
       // Catch all errors
+      // eslint-disable-next-line no-console
       console.log("err ", err)
       // display error
     } finally {
