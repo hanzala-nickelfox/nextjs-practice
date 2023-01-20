@@ -1,7 +1,7 @@
 // List all endpoints here
 // @ts-check
-import { Endpoint } from "./apiModel";
-import { HTTP_METHODS } from "./httpMethods";
+import { Endpoint } from "./apiModel"
+import { HTTP_METHODS } from "./httpMethods"
 
 // ******************
 // Endpoint class takes 3 params in constructor ==> "endpoint", "http-method", "API-version"
@@ -9,6 +9,6 @@ import { HTTP_METHODS } from "./httpMethods";
 // ******************
 export const API = {
   AUTH: {
-    LOGIN: new Endpoint("/auth", HTTP_METHODS.POST),
-  },
-};
+    LOGIN: new Endpoint("/auth", HTTP_METHODS.POST)
+  }
+}

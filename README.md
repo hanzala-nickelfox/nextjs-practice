@@ -18,7 +18,7 @@ You will also see any lint errors in the console.
 
 | Run Script                                           | Description                 |
 | ---------------------------------------------------- | --------------------------- |
-| <span style="color:brown">**npm run qa**</span>    | Runs in QA environment      |
+| <span style="color:brown">**npm run qa**</span>      | Runs in QA environment      |
 | <span style="color:brown">**npm run staging**</span> | Runs in Staging environment |
 
 ## About the boilerplace
@@ -127,7 +127,7 @@ To import modules, just place `@` before the name of directory followed by the f
 For example, If I want to import `AppLoader` from `src/components/Loader/AppLoader.js` then the import would look like
 
 ```js
-import AppLoader from "@components/Loader/AppLoader";
+import AppLoader from "@components/Loader/AppLoader"
 ```
 
 You need not to write long import paths for most of the times.
@@ -159,7 +159,7 @@ export const API = {
   AUTH: {
     LOGIN: new Endpoint("/auth", HTTP_METHODS.POST)
   }
-};
+}
 ```
 
 Though the call is related to authentication, we'll put this under the `AUTH` property. \
@@ -178,18 +178,17 @@ Now create a new service file in `network/` directory. We'll create `authService
 ```js
 // Sample service to make network call
 
-import { API, NetworkManager } from "./core";
+import { API, NetworkManager } from "./core"
 
 export class AuthService {
   static async loginByEmail(payload) {
-    const instance = new NetworkManager(API.AUTH.LOGIN, payload);
-    return await instance.httpRequest(false);
+    const instance = new NetworkManager(API.AUTH.LOGIN, payload)
+    return await instance.httpRequest(false)
   }
 }
 ```
 
 First you need to create a new instance of the `NetworkManager` by passing the Endpoint and the body parameter.
-
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

@@ -101,8 +101,7 @@ export default function PrivateLayout({ children }) {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
-          >
+            sx={{ mr: 2, ...(open && { display: "none" }) }}>
             <MenuIcon />
           </IconButton>
           <Typography variant="h5" noWrap component="div">
@@ -121,8 +120,7 @@ export default function PrivateLayout({ children }) {
         }}
         variant="persistent"
         anchor="left"
-        open={open}
-      >
+        open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
@@ -144,15 +142,13 @@ export default function PrivateLayout({ children }) {
                 backgroundColor: pathname.includes(item.route)
                   ? theme.palette.primary.main
                   : theme.palette.background.default
-              }}
-            >
+              }}>
               <ListItemIcon
                 style={{
                   color: pathname.includes(item.route)
                     ? theme.palette.text.disabled
                     : theme.palette.text.primary
-                }}
-              >
+                }}>
                 {item.icon}
               </ListItemIcon>
               <ListItemText

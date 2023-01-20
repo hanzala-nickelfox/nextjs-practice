@@ -20,10 +20,7 @@ export default function PublicLayout({ children }) {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={7}>
-          <Image
-            src={ImagePath}
-            alt="PlaceholderImage"
-          />
+          <Image src={ImagePath} alt="PlaceholderImage" />
         </Grid>
         <Grid item xs={5}>
           {children}
