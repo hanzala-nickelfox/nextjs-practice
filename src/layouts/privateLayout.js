@@ -15,9 +15,9 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight"
 import ListItem from "@mui/material/ListItem"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import ListItemText from "@mui/material/ListItemText"
-import { DashboardMenus } from "@constants/dashboardMenu"
+import { DashboardMenus } from "@local/constants/dashboardMenu"
 import { useRouter } from "next/router"
-import { getSession } from "@session/cookie"
+import { getSession } from "@local/session_manager/cookie"
 
 const drawerWidth = 240
 

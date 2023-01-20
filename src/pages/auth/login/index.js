@@ -1,7 +1,7 @@
 import React from "react"
 import Button from "@mui/material/Button"
-import { setSession } from "@session/cookie"
-import AppDispatcher from "@redux/dispatchers/appDispatcher"
+import { setSession } from "@local/session_manager/cookie"
+import AppDispatcher from "@local/redux/dispatchers/appDispatcher"
 import { useRouter } from "next/router"
 
 function Login() {

@@ -2,7 +2,7 @@ import * as React from "react"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import { useRouter } from "next/router"
-import { getSession } from "@session/cookie"
+import { getSession } from "@local/session_manager/cookie"
 import Image from "next/image"
 import ImagePath from "../../public/images/placeholders/onboardingng.jpg"
 

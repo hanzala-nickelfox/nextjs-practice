@@ -1,17 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@styles/*": ["src/styles/*"],
-      "@pages/*": ["src/pages/*"],
-      "@components/*": ["src/components/*"],
-      "@helpers/*": ["src/helpers/*"],
-      "@redux/*": ["src/redux/*"],
-      "@network/*": ["src/network/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@session/*": ["src/session_manager/*"],
-      "@themes/*": ["src/themes/*"],
-      "@constants/*": ["src/constants/*"],
+      "@local/*": ["./src/*"]
     }
   }
 }
