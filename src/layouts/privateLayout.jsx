@@ -116,9 +116,7 @@ export default function PrivateLayout({ children }) {
           </ListItemButton>
         </List>
       </Drawer>
-      <Main open={true}>
-        {children}
-      </Main>
+      <Main open={true}>{children}</Main>
     </Box>
   )
 }
