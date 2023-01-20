@@ -14,7 +14,7 @@ import { Formik } from "formik"
 import { useStyles } from "../commonStyles"
 import { LoadingButton } from "@mui/lab"
 import LockOpenIcon from "@mui/icons-material/LockOpen"
-import { useCookies } from "react-cookie"
+import { Cookies, useCookies } from "react-cookie"
 import { LoginValidator } from "@local/helpers/validators/login"
 import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 import { useRouter } from "next/router"
@@ -149,3 +149,11 @@ const Login = () => {
 }
 
 export default Login
+
+export async function getServerSideProps(ctx) {
+  const cookie = new Cookies()
+  console.log(cookie)
+  return {
+    props: {}
+  }
+}

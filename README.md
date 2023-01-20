@@ -38,7 +38,7 @@ This boilerplate is created in the interest of developers to make the basic deve
 
 ```
 📦Project
- ┣ 📂environments
+ ┣ 📂env
  ┃ ┣ 📜.env.dev
  ┃ ┣ 📜.env.prod
  ┃ ┣ 📜.env.qa
@@ -90,8 +90,6 @@ This boilerplate is created in the interest of developers to make the basic deve
  ┃ ┃ ┣ 📜index.js
  ┃ ┃ ┣ 📜package.json
  ┃ ┃ ┗ 📜store.js
- ┃ ┣ 📂session_manager
- ┃ ┃ ┗ 📜cookie.js
  ┃ ┣ 📂styles
  ┃ ┃ ┣ 📜Home.module.css
  ┃ ┃ ┗ 📜globals.css
