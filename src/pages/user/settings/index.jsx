@@ -1,9 +1,11 @@
 import React from "react"
+import { Divider } from "@mui/material"
 
 function Settings() {
   return (
     <div>
-      <h1>Settings</h1>
+      <h2>Settings</h2>
+      <Divider />
     </div>
   )
 }

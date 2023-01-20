@@ -1,9 +1,11 @@
 import React from "react"
+import { Divider } from "@mui/material"
 
 function Dashboard() {
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h2>Dashboard</h2>
+      <Divider />
     </div>
   )
 }
