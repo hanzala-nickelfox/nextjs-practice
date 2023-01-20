@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Button, Grid, IconButton } from "@mui/material"
+import { Box, Button, Grid } from "@mui/material"
 import { useStyles } from "./commonLayoutStyles"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useRouter } from "next/router"
@@ -15,11 +15,13 @@ function CommonLayout({ children }) {
   return (
     <Box sx={styles.main}>
       <Grid container>
-        <Grid item xs={12}>
-          <Button onClick={goBack} startIcon={<ArrowBackIcon />}>
-            Back
-          </Button>
-        </Grid>
+        {router.pathname !== "/" && (
+          <Grid item xs={12}>
+            <Button onClick={goBack} startIcon={<ArrowBackIcon />}>
+              Back
+            </Button>
+          </Grid>
+        )}
         <Grid item xs={12}>
           {children}
         </Grid>

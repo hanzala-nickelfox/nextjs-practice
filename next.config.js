@@ -8,13 +8,13 @@ module.exports = {
 }
 
 module.exports = {
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/auth/login",
-        permanent: true
-      }
-    ]
-  }
+  // async redirects() { // redirect internal
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/auth/login",
+  //       permanent: true
+  //     }
+  //   ]
+  // }
 }

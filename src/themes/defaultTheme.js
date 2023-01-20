@@ -11,6 +11,7 @@ export const defaultTheme = {
       main: "#FF0040"
     },
     background: {
+      main: "#FFFFFF",
       default: "#FFFFFF"
     },
     text: {
@@ -64,7 +65,7 @@ export const defaultTheme = {
       fontSize: 14,
       lineHeight: 18 / 13,
       letterSpacing: 0.2,
-      fontWeight: 700,
+      fontWeight: 500,
       textTransform: "unset"
     },
     c1: {
