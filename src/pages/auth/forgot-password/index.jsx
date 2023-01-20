@@ -28,7 +28,7 @@ function ForgotPassword() {
   return (
     <React.Fragment>
       <Head>
-        <title>{process.env.NEXT_PUBLIC_APP_NAME} | Reset Password</title>
+        <title>{`${process.env.NEXT_PUBLIC_APP_NAME} | Reset Password`}</title>
       </Head>
       <Box sx={styles.container}>
         <Typography align="left" variant="h3">

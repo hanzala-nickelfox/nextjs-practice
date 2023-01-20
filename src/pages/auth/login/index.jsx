@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <React.Fragment>
       <Head>
-        <title>{process.env.NEXT_PUBLIC_APP_NAME} | Login</title>
+        <title>{`${process.env.NEXT_PUBLIC_APP_NAME} | Login`}</title>
       </Head>
       <Box sx={styles.container}>
         <Typography align="left" variant="h3">
