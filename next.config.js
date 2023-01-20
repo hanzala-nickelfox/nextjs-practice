@@ -1,5 +1,5 @@
 require("dotenv").config({
-  path: `environments/.env.${process.env.APP_ENV || "dev"}`
+  path: `env/.env.${process.env.APP_ENV || "dev"}`
 })
 
 module.exports = {
