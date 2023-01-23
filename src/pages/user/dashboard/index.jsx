@@ -1,6 +1,5 @@
 import React from "react"
 import { Divider } from "@mui/material"
-import { Cookies } from "react-cookie"
 import Head from "next/head"
 
 function Dashboard() {
@@ -19,9 +18,7 @@ function Dashboard() {
 
 export default Dashboard
 
-export async function getServerSideProps(ctx) {
-  const cookie = new Cookies()
-  // console.log(cookie)
+export async function getServerSideProps() {
   return {
     props: {}
   }

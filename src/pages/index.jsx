@@ -36,7 +36,7 @@ function Index() {
             {process.env.NEXT_PUBLIC_APP_NAME}
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            {MenuOptions.map((item, index) => {
+            {MenuOptions.map((item) => {
               if (item.title !== "Custom") {
                 return (
                   <Link
