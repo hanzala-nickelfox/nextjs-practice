@@ -65,7 +65,7 @@ export default function PrivateLayout({ children }) {
     if (!isLoggedIn) {
       router.replace("/auth/login", "/auth/login")
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn, router])
 
   const handleLogout = () => {
     removeCookie(CookieKeys.Auth, CookieOptions)

@@ -18,7 +18,7 @@ export default function PublicLayout({ children }) {
     if (isLoggedIn) {
       router.replace("/user/dashboard")
     }
-  }, [isLoggedIn])
+  }, [isLoggedIn, router])
 
   const handleRouting = () => {
     router.push("/")
