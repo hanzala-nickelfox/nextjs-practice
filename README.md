@@ -24,7 +24,9 @@ You will also see any lint errors in the console.
 | <span style="color:brown">**npm run staging**</span> | Runs in Staging environment |
 
 ## For Windows machines
-If you're working on Windows machine, then run 
+
+If you're working on Windows machine, then run
+
 ```bash
   npm run start:win
 ```
@@ -37,7 +39,7 @@ This boilerplate is created in the interest of developers to make the basic deve
 
 | Run Script | Env file |
 | ---------- | -------- |
-| start        | .dev     |
+| start      | .dev     |
 | qa         | .qa      |
 | staging    | .staging |
 | prod       | .prod    |
