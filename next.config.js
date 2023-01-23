@@ -7,14 +7,14 @@ module.exports = {
   env: process.env.APP_ENV
 }
 
-module.exports = {
-  // async redirects() { // redirect internal
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/auth/login",
-  //       permanent: true
-  //     }
-  //   ]
-  // }
-}
+// module.exports = {
+//   async redirects() { // redirect internal
+//     return [
+//       {
+//         source: "/",
+//         destination: "/auth/login",
+//         permanent: true
+//       }
+//     ]
+//   }
+// }
