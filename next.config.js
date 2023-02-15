@@ -9,15 +9,3 @@ module.exports = {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL
   }
 }
-
-// module.exports = {
-//   async redirects() { // redirect internal
-//     return [
-//       {
-//         source: "/",
-//         destination: "/auth/login",
-//         permanent: true
-//       }
-//     ]
-//   }
-// }
