@@ -5,13 +5,20 @@ import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useStyles } from "./indexStyles"
 
 function Index() {
   const styles = useStyles()
   const router = useRouter()
   const isLoggedIn = useIsLoggedIn()
+
+  const [btnLabel, setBtnLabel] = useState("Login")
+
+  useEffect(() => {
+    const label = isLoggedIn ? "Go to Dashboard" : "Login"
+    setBtnLabel(label)
+  }, [isLoggedIn])
 
   const navigate = () => {
     if (isLoggedIn) {
@@ -46,7 +53,7 @@ function Index() {
               } else {
                 return (
                   <Button key={item.link} variant="outlined" onClick={navigate}>
-                    {isLoggedIn ? "Go to Dashboard" : "Login"}
+                    {btnLabel}
                   </Button>
                 )
               }
