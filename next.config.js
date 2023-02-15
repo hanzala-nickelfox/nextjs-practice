@@ -4,7 +4,10 @@ require("dotenv").config({
 
 module.exports = {
   reactStrictMode: true,
-  env: process.env.APP_ENV
+  env: {
+    NEXT_PUBLIC_ENV: process.env.NEXT_PUBLIC_ENV,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL
+  }
 }
 
 // module.exports = {
