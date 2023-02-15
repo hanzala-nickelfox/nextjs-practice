@@ -1,5 +1,6 @@
 {
   "name": "next-web-template",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "APP_ENV=dev next dev",
