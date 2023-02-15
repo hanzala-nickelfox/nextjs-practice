@@ -12,11 +12,7 @@ export const API = {
     HTTP: new APIRouter("/http", HTTP_METHODS.GET)
   },
   AUTH: {
-    LOGIN: new APIWithOfflineRouter(
-      "/auth/login",
-      HTTP_METHODS.POST,
-      OFFLINE.LOGIN
-    )
+    LOGIN: new APIWithOfflineRouter("/auth/login", HTTP_METHODS.POST, OFFLINE.LOGIN)
   },
   FILE: {
     UPLOAD: new APIRouter("/test-api/upload.php", HTTP_METHODS.POST)

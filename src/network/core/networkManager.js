@@ -28,8 +28,7 @@ import offlineManager from "./offlineManager"
 // ********************
 
 export default function networkManager(router, withFile = false) {
-  const { API_URL, TIMEOUT, API_AUTH_HEADER, AUTH_TYPE, CONTENT_TYPE } =
-    APIConfig
+  const { API_URL, TIMEOUT, API_AUTH_HEADER, AUTH_TYPE, CONTENT_TYPE } = APIConfig
   const REQ_CONTENT_TYPE = withFile ? CONTENT_TYPE.MULTIPART : CONTENT_TYPE.JSON
   axios.defaults.baseURL = API_URL
   axios.defaults.timeout = TIMEOUT

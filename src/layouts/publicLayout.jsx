@@ -36,17 +36,15 @@ export default function PublicLayout({ children }) {
                 variant={hdTabResolution ? "h5" : "h3"}>
                 {process.env.NEXT_PUBLIC_APP_NAME}
               </Typography>
-              <Typography
-                sx={styles.subtitle}
-                variant={hdTabResolution ? "h5" : "h3"}>
+              <Typography sx={styles.subtitle} variant={hdTabResolution ? "h5" : "h3"}>
                 {router.pathname === "/auth/forgot-password"
                   ? "Can't recollect your password?"
                   : "Happy to see you back on portal!"}
               </Typography>
               {router.pathname === "/auth/forgot-password" ? (
                 <Typography sx={styles.tagline} variant="subtitle">
-                  We have got you covered! Enter your registered Email and then
-                  check your mail for the Password Reset Link.
+                  We have got you covered! Enter your registered Email and then check your mail for
+                  the Password Reset Link.
                 </Typography>
               ) : null}
             </Box>

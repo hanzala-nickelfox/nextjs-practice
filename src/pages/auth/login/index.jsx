@@ -64,15 +64,7 @@ const Login = () => {
             initialValues={LoginValidator.initialValues}
             validationSchema={LoginValidator.validationSchema}
             onSubmit={userLogin}>
-            {({
-              isValid,
-              handleSubmit,
-              values,
-              handleChange,
-              handleBlur,
-              touched,
-              errors
-            }) => (
+            {({ isValid, handleSubmit, values, handleChange, handleBlur, touched, errors }) => (
               <React.Fragment>
                 <Grid item xs={12}>
                   <InputLabel sx={styles.label} htmlFor="email">
