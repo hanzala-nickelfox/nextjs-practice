@@ -47,58 +47,101 @@ This boilerplate is created in the interest of developers to make the basic deve
 # Structure
 
 ```
-📦Project
+📦project
+ ┣ 📂.husky
+ ┃ ┣ 📂_
+ ┃ ┃ ┣ 📜.gitignore
+ ┃ ┃ ┗ 📜husky.sh
+ ┃ ┗ 📜pre-commit
+ ┣ 📂.vscode
+ ┃ ┗ 📜settings.json
  ┣ 📂env
  ┃ ┣ 📜.env.dev
  ┃ ┣ 📜.env.prod
  ┃ ┣ 📜.env.qa
  ┃ ┗ 📜.env.staging
  ┣ 📂public
+ ┃ ┣ 📂images
+ ┃ ┃ ┣ 📂backgrounds
+ ┃ ┃ ┃ ┣ 📜error-404.png
+ ┃ ┃ ┃ ┗ 📜eugene-golovesov-nr5zYqe0uiQ-unsplash.jpg
+ ┃ ┃ ┣ 📂icons
+ ┃ ┃ ┃ ┗ 📜mockup.png
+ ┃ ┃ ┗ 📂placeholders
+ ┃ ┃ ┃ ┗ 📜onboardingng.jpg
  ┃ ┣ 📜favicon.ico
  ┃ ┗ 📜vercel.svg
  ┣ 📂src
  ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂sections
+ ┃ ┃ ┗ 📂typography
+ ┃ ┣ 📂constants
+ ┃ ┃ ┣ 📜cookieKeys.js
+ ┃ ┃ ┣ 📜dashboardMenu.js
+ ┃ ┃ ┗ 📜publicMenu.js
  ┃ ┣ 📂helpers
+ ┃ ┃ ┣ 📂app-dates
+ ┃ ┃ ┃ ┗ 📜dates.js
+ ┃ ┃ ┗ 📂validators
+ ┃ ┃ ┃ ┣ 📜forgotPassword.js
+ ┃ ┃ ┃ ┗ 📜login.js
+ ┃ ┣ 📂hooks
+ ┃ ┃ ┗ 📜state.js
  ┃ ┣ 📂layouts
- ┃ ┃ ┣ 📜privateLayout.js
- ┃ ┃ ┗ 📜publicLayout.js
+ ┃ ┃ ┣ 📜commonLayout.jsx
+ ┃ ┃ ┣ 📜commonLayoutStyles.js
+ ┃ ┃ ┣ 📜privateLayout.jsx
+ ┃ ┃ ┣ 📜privateLayoutStyles.js
+ ┃ ┃ ┣ 📜publicLayout.jsx
+ ┃ ┃ ┗ 📜publicLayoutStyles.js
  ┃ ┣ 📂network
  ┃ ┃ ┣ 📂core
- ┃ ┃ ┃ ┣ 📜apiModel.js
+ ┃ ┃ ┃ ┣ 📜abortController.js
  ┃ ┃ ┃ ┣ 📜endpoints.js
- ┃ ┃ ┃ ┣ 📜httpMethods.js
+ ┃ ┃ ┃ ┣ 📜httpHelper.js
  ┃ ┃ ┃ ┣ 📜index.js
  ┃ ┃ ┃ ┣ 📜networkManager.js
+ ┃ ┃ ┃ ┣ 📜offlineManager.js
  ┃ ┃ ┃ ┣ 📜responseParser.js
  ┃ ┃ ┃ ┣ 📜serverConfig.js
+ ┃ ┃ ┃ ┣ 📜statusCode.js
  ┃ ┃ ┃ ┗ 📜tokenRefresher.js
- ┃ ┃ ┣ 📜authService.js
- ┃ ┃ ┣ 📜index.js
- ┃ ┃ ┗ 📜package.json
+ ┃ ┃ ┣ 📂offlineResponse
+ ┃ ┃ ┃ ┣ 📂files
+ ┃ ┃ ┃ ┃ ┗ 📜login.json
+ ┃ ┃ ┃ ┗ 📜index.js
+ ┃ ┃ ┗ 📜authService.js
  ┃ ┣ 📂pages
  ┃ ┃ ┣ 📂api
  ┃ ┃ ┃ ┗ 📜hello.js
  ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┣ 📂forgot-password
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
  ┃ ┃ ┃ ┣ 📂login
- ┃ ┃ ┃ ┃ ┗ 📜index.js
- ┃ ┃ ┃ ┗ 📂signup
- ┃ ┃ ┃ ┃ ┗ 📜index.js
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
+ ┃ ┃ ┃ ┣ 📂signup
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
+ ┃ ┃ ┃ ┗ 📜commonStyles.js
+ ┃ ┃ ┣ 📂public
+ ┃ ┃ ┃ ┣ 📜about.jsx
+ ┃ ┃ ┃ ┗ 📜privacy-policy.jsx
  ┃ ┃ ┣ 📂user
  ┃ ┃ ┃ ┣ 📂dashboard
- ┃ ┃ ┃ ┃ ┗ 📜index.js
- ┃ ┃ ┃ ┗ 📂settings
- ┃ ┃ ┃ ┃ ┗ 📜index.js
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
+ ┃ ┃ ┃ ┣ 📂settings
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
+ ┃ ┃ ┃ ┣ 📂sub-admins
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
+ ┃ ┃ ┃ ┗ 📂users
+ ┃ ┃ ┃ ┃ ┗ 📜index.jsx
+ ┃ ┃ ┣ 📜404.jsx
  ┃ ┃ ┣ 📜_app.js
- ┃ ┃ ┗ 📜index.js
+ ┃ ┃ ┣ 📜_document.js
+ ┃ ┃ ┣ 📜index.jsx
+ ┃ ┃ ┗ 📜indexStyles.js
  ┃ ┣ 📂redux
- ┃ ┃ ┣ 📂actions
- ┃ ┃ ┃ ┗ 📜appActions.js
- ┃ ┃ ┣ 📂dispatchers
- ┃ ┃ ┃ ┗ 📜appDispatcher.js
- ┃ ┃ ┣ 📂reducers
- ┃ ┃ ┃ ┗ 📜appReducer.js
- ┃ ┃ ┣ 📜index.js
- ┃ ┃ ┣ 📜package.json
+ ┃ ┃ ┣ 📂slices
+ ┃ ┃ ┃ ┗ 📜appSlice.js
  ┃ ┃ ┗ 📜store.js
  ┃ ┣ 📂styles
  ┃ ┃ ┣ 📜Home.module.css
@@ -107,6 +150,12 @@ This boilerplate is created in the interest of developers to make the basic deve
  ┃ ┃ ┗ 📜defaultTheme.js
  ┃ ┗ 📜.DS_Store
  ┣ 📜.DS_Store
+ ┣ 📜.env
+ ┣ 📜.eslintrc.js
+ ┣ 📜.gitignore
+ ┣ 📜.prettierignore
+ ┣ 📜.prettierrc
+ ┣ 📜NETWORK.MD
  ┣ 📜README.md
  ┣ 📜jsconfig.json
  ┣ 📜next.config.js
@@ -196,6 +245,4 @@ export class AuthService {
 }
 ```
 
-First you need to create a new instance of the `NetworkManager` by passing the Endpoint and the body parameter.
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**For more detailed information about Network Call, please read [Network Call Docs](/NETWORK.MD)**

@@ -16,11 +16,7 @@ function MyApp({ Component, pageProps }) {
   const isPublic = path.pathname.includes("/auth/")
   const isPrivate = path.pathname.includes("/user/")
 
-  const Wrapper = isPublic
-    ? PublicLayout
-    : isPrivate
-    ? PrivateLayout
-    : CommonLayout
+  const Wrapper = isPublic ? PublicLayout : isPrivate ? PrivateLayout : CommonLayout
 
   return (
     <CookiesProvider>

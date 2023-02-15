@@ -1,12 +1,5 @@
 import React, { useState } from "react"
-import {
-  Typography,
-  TextField,
-  Grid,
-  Divider,
-  Box,
-  InputLabel
-} from "@mui/material"
+import { Typography, TextField, Grid, Divider, Box, InputLabel } from "@mui/material"
 import { Formik } from "formik"
 import { useStyles } from "../commonStyles"
 import { LoadingButton } from "@mui/lab"
@@ -22,6 +15,7 @@ function ForgotPassword() {
 
   const resetPassword = async (values) => {
     setShowLoader(true)
+    // eslint-disable-next-line no-console
     console.log(values)
   }
 
@@ -44,15 +38,7 @@ function ForgotPassword() {
             initialValues={FPValidator.initialValues}
             validationSchema={FPValidator.validationSchema}
             onSubmit={resetPassword}>
-            {({
-              isValid,
-              handleSubmit,
-              values,
-              handleChange,
-              handleBlur,
-              touched,
-              errors
-            }) => (
+            {({ isValid, handleSubmit, values, handleChange, handleBlur, touched, errors }) => (
               <React.Fragment>
                 <Grid item xs={12}>
                   <InputLabel sx={styles.label} htmlFor="email">

@@ -93,8 +93,7 @@ export default function PrivateLayout({ children }) {
                 sx={activeMenu(item) ? styles.activeListItem : styles.listItem}
                 key={item.alias}
                 onClick={() => navigate(item.route)}>
-                <ListItemIcon
-                  sx={activeMenu(item) ? styles.iconActive : styles.icon}>
+                <ListItemIcon sx={activeMenu(item) ? styles.iconActive : styles.icon}>
                   {item.icon}
                 </ListItemIcon>
                 <ListItemText>

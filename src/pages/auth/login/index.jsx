@@ -19,6 +19,7 @@ import { LoginValidator } from "@local/helpers/validators/login"
 import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 import { useRouter } from "next/router"
 import Head from "next/head"
+import { AuthService } from "@local/network/authService"
 
 const Login = () => {
   const styles = useStyles()
@@ -35,8 +36,13 @@ const Login = () => {
 
   const userLogin = async (values) => {
     setShowLoader(true)
-    console.log(values)
-    setCookie(CookieKeys.Auth, "39874yrhf89234y3hu3iy89", CookieOptions)
+    const response = await AuthService.loginByEmail(values)
+    setShowLoader(false)
+    if (response.success) {
+      setCookie(CookieKeys.Auth, response.data.token, CookieOptions)
+    } else {
+      // TODO: show error toast
+    }
   }
 
   return (
@@ -58,15 +64,7 @@ const Login = () => {
             initialValues={LoginValidator.initialValues}
             validationSchema={LoginValidator.validationSchema}
             onSubmit={userLogin}>
-            {({
-              isValid,
-              handleSubmit,
-              values,
-              handleChange,
-              handleBlur,
-              touched,
-              errors
-            }) => (
+            {({ isValid, handleSubmit, values, handleChange, handleBlur, touched, errors }) => (
               <React.Fragment>
                 <Grid item xs={12}>
                   <InputLabel sx={styles.label} htmlFor="email">
