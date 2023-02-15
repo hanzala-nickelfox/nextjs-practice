@@ -196,6 +196,4 @@ export class AuthService {
 }
 ```
 
-First you need to create a new instance of the `NetworkManager` by passing the Endpoint and the body parameter.
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+**For more detailed information about Network Call, please read [Network Call Docs](/NETWORK.MD)**
