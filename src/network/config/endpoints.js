@@ -1,6 +1,7 @@
 // List all endpoints here
-import { OFFLINE } from "@local/network/offline"
+
 import { HTTP_METHODS, APIRouter, APIWithOfflineRouter, APICustomRouter } from "../core/httpHelper"
+import { OFFLINE } from "../offline"
 
 // ******************
 // Endpoint class takes 3 params in constructor ==> "endpoint", "http-method", "API-version"

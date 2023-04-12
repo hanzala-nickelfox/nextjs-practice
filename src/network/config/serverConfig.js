@@ -1,5 +1,5 @@
 export const APIConfig = {
-  BASE_URL: process.env.NEXT_PUBLIC_BASE_URL || process.env.BASE_URL,
+  BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
   TIMEOUT: 15000,
   API_AUTH_HEADER: "Authorization",
   AUTH_TYPE: "Bearer",

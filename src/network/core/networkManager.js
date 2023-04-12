@@ -5,11 +5,12 @@ import { APIWithOfflineRouter, HTTP_METHODS } from "./httpHelper"
 import { APIConfig } from "../config/serverConfig"
 import { APIError, APIResponse } from "./responseParser"
 import { refreshAuthToken } from "./tokenRefresher"
-import { CookieKeys } from "@local/constants/cookieKeys"
 import { APIAborter } from "./abortController"
 import offlineManager from "./offlineManager"
 import { HTTP_STATUS } from "./statusCode"
 import { apiError, offlineNotation } from "./errorParser"
+
+import { CookieKeys } from "@local/constants/cookieKeys"
 import { UserState } from "@local/redux/dispatcher/UserState"
 
 // ********************
@@ -46,7 +47,8 @@ export default function networkManager(router, withFile = false) {
     axios.defaults.headers.common[API_AUTH_HEADER] = `${AUTH_TYPE} ${authToken}`
   }
 
-  const AppEnvIsDev = process.env.REACT_APP_APP_ENV === "dev"
+  const AppEnvIsDev = process.env.NEXT_PUBLIC_ENV === "dev"
+
   let refreshCount = 0
 
   async function request(body = {}, params = {} || []) {
@@ -63,17 +65,13 @@ export default function networkManager(router, withFile = false) {
         ...(getHttpMethod && { data: httpBody }),
         ...(getArrayParams && { params: params })
       })
-
       // If token expired, get it refreshed
       const response = result.data
-
       return new APIResponse(response.data, response.success, result.status, response.data?.message)
     } catch (err) {
-      // console.log(APIWithOfflineRouter, AppEnvIsDev, IsNetworkError, "IsNetworkError")
       // Catch all errors
       apiError(err?.response?.data?.error?.message)
       const IsNetworkError = err.code === HTTP_STATUS.NETWORK_ERR
-
       if (router instanceof APIWithOfflineRouter && AppEnvIsDev && IsNetworkError) {
         offlineNotation()
         return offlineManager(router.offlineJson)
