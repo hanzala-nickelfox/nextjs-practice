@@ -63,13 +63,17 @@ export default function networkManager(router, withFile = false) {
         ...(getHttpMethod && { data: httpBody }),
         ...(getArrayParams && { params: params })
       })
+
       // If token expired, get it refreshed
       const response = result.data
+
       return new APIResponse(response.data, response.success, result.status, response.data?.message)
     } catch (err) {
+      // console.log(APIWithOfflineRouter, AppEnvIsDev, IsNetworkError, "IsNetworkError")
       // Catch all errors
       apiError(err?.response?.data?.error?.message)
       const IsNetworkError = err.code === HTTP_STATUS.NETWORK_ERR
+
       if (router instanceof APIWithOfflineRouter && AppEnvIsDev && IsNetworkError) {
         offlineNotation()
         return offlineManager(router.offlineJson)
