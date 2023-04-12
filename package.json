@@ -18,7 +18,8 @@
     "serve:prod": "next start -p 3004",
     "prettier:write": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\"",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "react-toastify": "^9.1.2"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",

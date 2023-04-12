@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 import { useCookies } from "react-cookie"
-import { AuthService } from "@local/network/authService"
 import { useLoginModel } from "./login.model"
 
 const useLoginController = () => {

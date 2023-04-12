@@ -2,12 +2,15 @@
 import { Cookies } from "react-cookie"
 import axios from "axios"
 import { APIWithOfflineRouter, HTTP_METHODS } from "./httpHelper"
-import { APIConfig } from "./serverConfig"
+import { APIConfig } from "../config/serverConfig"
 import { APIError, APIResponse } from "./responseParser"
 import { refreshAuthToken } from "./tokenRefresher"
 import { CookieKeys } from "@local/constants/cookieKeys"
 import { APIAborter } from "./abortController"
 import offlineManager from "./offlineManager"
+import { HTTP_STATUS } from "./statusCode"
+import { apiError, offlineNotation } from "./errorParser"
+import { UserState } from "@local/redux/dispatcher/UserState"
 
 // ********************
 // Create a new Instance of NetworkManager by passing APIRouter argument
@@ -28,9 +31,10 @@ import offlineManager from "./offlineManager"
 // ********************
 
 export default function networkManager(router, withFile = false) {
-  const { API_URL, TIMEOUT, API_AUTH_HEADER, AUTH_TYPE, CONTENT_TYPE } = APIConfig
+  const { TIMEOUT, API_AUTH_HEADER, AUTH_TYPE, CONTENT_TYPE } = APIConfig
   const REQ_CONTENT_TYPE = withFile ? CONTENT_TYPE.MULTIPART : CONTENT_TYPE.JSON
-  axios.defaults.baseURL = API_URL
+
+  axios.defaults.baseURL = router.baseURL
   axios.defaults.timeout = TIMEOUT
   axios.defaults.headers.common["Content-Type"] = REQ_CONTENT_TYPE
   axios.defaults.headers.common["Accept-Language"] = "en"
@@ -38,9 +42,12 @@ export default function networkManager(router, withFile = false) {
   const cookie = new Cookies()
   const authToken = cookie.get(CookieKeys.Auth)
 
-  if (authToken) {
+  if (authToken && authToken !== "undefined") {
     axios.defaults.headers.common[API_AUTH_HEADER] = `${AUTH_TYPE} ${authToken}`
   }
+
+  const AppEnvIsDev = process.env.REACT_APP_APP_ENV === "dev"
+  let refreshCount = 0
 
   async function request(body = {}, params = {} || []) {
     const url = urlBuilder(router, params)
@@ -57,19 +64,28 @@ export default function networkManager(router, withFile = false) {
         ...(getArrayParams && { params: params })
       })
       // If token expired, get it refreshed
-      if (result.status === 401) {
-        const refreshToken = cookie.get(CookieKeys.REFRESH_TOKEN)
-        await refreshAuthToken(refreshToken)
-        // pass the control back to network manager
-        return await request(body, params)
-      }
-      return new APIResponse(result.data, result.status, result.statusText)
+      const response = result.data
+      return new APIResponse(response.data, response.success, result.status, response.data?.message)
     } catch (err) {
       // Catch all errors
-      // eslint-disable-next-line no-console
-      console.log("err ", err)
-      if (router instanceof APIWithOfflineRouter) {
+      apiError(err?.response?.data?.error?.message)
+      const IsNetworkError = err.code === HTTP_STATUS.NETWORK_ERR
+      if (router instanceof APIWithOfflineRouter && AppEnvIsDev && IsNetworkError) {
+        offlineNotation()
         return offlineManager(router.offlineJson)
+      }
+      if (err.response?.status === 401) {
+        if (refreshCount < APIConfig.MAX_REFRESH_ATTEMPTS) {
+          const refreshToken = cookie.get(CookieKeys.REFRESH_TOKEN)
+          await refreshAuthToken(refreshToken)
+          refreshCount++
+          // pass the control back to network manager
+          return await request(body, params)
+        } else {
+          UserState.observeLogout()
+        }
+      } else if (err.code === HTTP_STATUS.NETWORK_ERR) {
+        apiError("Internal server error!")
       }
       return new APIError(err.message, err.code)
     }
@@ -81,11 +97,15 @@ export default function networkManager(router, withFile = false) {
 
 // Prepare endpoint url with params
 function urlBuilder(router, params) {
-  let uri = `/${router.version}${router.endpoint}`
+  let uri = ""
+  if (typeof router.version === "string") {
+    uri = `/${router.version}`
+  }
+  uri = uri.concat(router.endpoint)
   // all params in form of uri/id1/id2/id3
   if (Array.isArray(params)) {
     for (let key of params) {
-      uri += `/${key}`
+      uri = uri.concat("/", key)
     }
   }
   return uri

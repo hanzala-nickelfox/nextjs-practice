@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Typography, TextField, Grid, Divider, Box, InputLabel } from "@mui/material"
 import { Formik } from "formik"
 import { useStyles } from "../commonStyles"
@@ -7,18 +7,13 @@ import LockResetIcon from "@mui/icons-material/LockReset"
 import { FPValidator } from "@local/helpers/validators/forgotPassword"
 import { useRouter } from "next/router"
 import Head from "next/head"
+import useForgotPasswordController from "./forgot-password.controller"
 
 function ForgotPassword() {
   const styles = useStyles()
-  const [showLoader, setShowLoader] = useState(false)
+
   const navigate = useRouter()
-
-  const resetPassword = async (values) => {
-    setShowLoader(true)
-    // eslint-disable-next-line no-console
-    console.log(values)
-  }
-
+  const { showLoader, resetPassword } = useForgotPasswordController()
   return (
     <React.Fragment>
       <Head>
