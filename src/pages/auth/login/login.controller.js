@@ -3,8 +3,10 @@ import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 
 import { useCookies } from "react-cookie"
 import { useLoginModel } from "./login.model"
+import { useRouter } from "next/router"
 
 const useLoginController = () => {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [showLoader, setShowLoader] = useState(false)
   const [cookies, setCookie] = useCookies(["auth-token"])
@@ -26,12 +28,17 @@ const useLoginController = () => {
     }
   }
 
+  const navigateToSignUp = () => {
+    router.push("/auth/signup")
+  }
+
   return {
     showPassword,
     showLoader,
     cookies,
     togglePasswordVisibility,
-    userLogin
+    userLogin,
+    navigateToSignUp
   }
 }
 

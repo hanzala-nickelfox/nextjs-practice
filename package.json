@@ -19,7 +19,8 @@
     "prettier:write": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\"",
     "lint": "next lint",
     "prepare": "husky install",
-    "react-toastify": "^9.1.2"
+    "react-toastify": "^9.1.2",
+    "react-phone-number-input": "^3.2.19"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -35,6 +36,7 @@
     "react": "18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
+    "react-phone-number-input": "^3.2.19",
     "react-redux": "^8.0.5",
     "react-toastify": "^9.1.2",
     "redux": "^4.2.0",

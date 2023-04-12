@@ -1,5 +1,5 @@
-import { ToasConfig } from "./toastConfig"
 import { toast } from "react-toastify"
+import { ToasConfig } from "./toastConfig"
 
 export const Toast = {
   success: (msg) => toast.success(msg, ToasConfig),

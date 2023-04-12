@@ -20,7 +20,8 @@ import Head from "next/head"
 import useLoginController from "./login.controller"
 
 const Login = () => {
-  const { showPassword, showLoader, togglePasswordVisibility, userLogin } = useLoginController()
+  const { showPassword, showLoader, togglePasswordVisibility, userLogin, navigateToSignUp } =
+    useLoginController()
 
   const styles = useStyles()
 
@@ -124,6 +125,11 @@ const Login = () => {
                     sx={styles.forgotPassword}
                     variant="c3">
                     Forgot Password?
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography onClick={navigateToSignUp} sx={styles.forgotPassword} variant="c3">
+                    Create a new account!
                   </Typography>
                 </Grid>
               </React.Fragment>

@@ -14,3 +14,24 @@ a {
 * {
   box-sizing: border-box;
 }
+.input-error .PhoneInputInput {
+  height: 45px !important;
+  border-radius: 4px;
+  border: 1px solid #ff0040;
+  padding: 0px 12px;
+}
+
+.input-field .PhoneInputInput {
+  height: 45px !important;
+  border-radius: 4px;
+  border: 1px solid rgb(205, 202, 202);
+  padding: 0px 12px;
+}
+
+.input-field .PhoneInputInput:hover {
+  border: 1px solid rgb(22, 21, 21);
+}
+
+.PhoneInputInput:focus-visible {
+  outline: 1px solid #ff0040;
+}

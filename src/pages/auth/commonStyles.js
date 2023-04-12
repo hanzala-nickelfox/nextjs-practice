@@ -70,6 +70,54 @@ export const useStyles = () => {
     loader: {
       padding: "0px 15px 1px 16px",
       color: theme.palette.text.white
+    },
+    // Signup styles
+    signupContainer: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      margin: "auto",
+      height: "100vh",
+      maxWidth: "66%",
+      marginTop: "100px"
+    },
+    userimg: {
+      height: "150px",
+      width: "150px",
+      borderRadius: "50%",
+      marginLeft: "1rem"
+    },
+    fileUpload: {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "left",
+      marginTop: "-0.7rem",
+      marginBottom: "1rem"
+    },
+    fileButton: {
+      marginTop: "1rem",
+      width: "150px",
+      marginLeft: "2rem"
+    },
+    textbox: {
+      textAlign: "left"
+    },
+    errorBox: {
+      height: "16px"
+    },
+    errorText: {
+      color: theme.palette.error.main,
+      fontWeight: 400
+    },
+    resendBtn: {
+      padding: "16px 50px",
+      marginBottom: "20px"
+    },
+    imgBox: {
+      display: "flex",
+      alignItems: "center",
+      flexDirection: "column"
     }
   }
 }
