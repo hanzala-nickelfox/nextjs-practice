@@ -1,8 +1,9 @@
 import React from "react"
 import { Divider } from "@mui/material"
 import Head from "next/head"
-import getServerSideProps from "./dashboard.server"
-function Dashboard() {
+import { getServerSideProps } from "./dashboard.server"
+function Dashboard(props) {
+  console.log(props.data, "props")
   return (
     <React.Fragment>
       <Head>
