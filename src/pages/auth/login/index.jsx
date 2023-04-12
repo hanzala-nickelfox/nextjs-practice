@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import {
   Typography,
   TextField,
@@ -14,36 +14,19 @@ import { Formik } from "formik"
 import { useStyles } from "../commonStyles"
 import { LoadingButton } from "@mui/lab"
 import LockOpenIcon from "@mui/icons-material/LockOpen"
-import { useCookies } from "react-cookie"
 import { LoginValidator } from "@local/helpers/validators/login"
-import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 import { useRouter } from "next/router"
 import Head from "next/head"
-import { AuthService } from "@local/network/authService"
+import useLoginController from "./login.controller"
 
 const Login = () => {
+  const { showPassword, showLoader, togglePasswordVisibility, userLogin } = useLoginController()
+
   const styles = useStyles()
-  const [showPassword, setShowPassword] = useState(false)
-  const [showLoader, setShowLoader] = useState(false)
+
   // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie] = useCookies(["auth-token"])
 
   const navigate = useRouter()
-
-  const togglePasswordVisiblity = () => {
-    setShowPassword((prev) => !prev)
-  }
-
-  const userLogin = async (values) => {
-    setShowLoader(true)
-    const response = await AuthService.loginByEmail(values)
-    setShowLoader(false)
-    if (response.success) {
-      setCookie(CookieKeys.Auth, response.data.token, CookieOptions)
-    } else {
-      // TODO: show error toast
-    }
-  }
 
   return (
     <React.Fragment>
@@ -112,7 +95,7 @@ const Login = () => {
                         <InputAdornment position="end">
                           <IconButton
                             aria-label="toggle password visibility"
-                            onClick={togglePasswordVisiblity}>
+                            onClick={togglePasswordVisibility}>
                             {showPassword ? <Visibility /> : <VisibilityOff />}
                           </IconButton>
                         </InputAdornment>
