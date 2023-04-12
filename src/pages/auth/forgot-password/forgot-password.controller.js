@@ -1,18 +1,40 @@
-import { useState } from "react"
+import { useRouter } from "next/router"
+import { useRef, useState } from "react"
+import { useForgotPasswordModel } from "./forgot-password.model"
 
-const useForgotPasswordController = () => {
+export const useForgotPasswordController = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const [showLoader, setShowLoader] = useState(false)
+  const [isEmailSent, setIsEmailSent] = useState(false)
+  const formikRef = useRef()
+  const router = useRouter()
+  const model = useForgotPasswordModel()
 
-  const resetPassword = async (values) => {
+  const sendEmail = async (values) => {
     setShowLoader(true)
     // eslint-disable-next-line no-console
-    console.log(values)
+    const response = await model.sendEmail(values)
+    setShowLoader(false)
+    if (response.success) {
+      setIsEmailSent(true)
+    }
+  }
+
+  const togglePasswordVisiblity = () => {
+    setShowPassword((prev) => !prev)
+  }
+
+  const navigateToLogin = () => {
+    router.push("/auth/login")
   }
 
   return {
+    showPassword,
     showLoader,
-    resetPassword
+    togglePasswordVisiblity,
+    sendEmail,
+    navigateToLogin,
+    isEmailSent,
+    formikRef
   }
 }
-
-export default useForgotPasswordController
