@@ -65,21 +65,7 @@ function Index() {
       </AppBar>
       <Grid container sx={styles.main} justifyContent="space-between">
         <Grid container item xs={12} md={6} alignItems="center">
-          <Box
-            className="card"
-            // style={{
-            //   backgroundImage:
-            //     "linear-gradient(to right, rgba(255,255,255, 1), rgba(255,255,255, 0.1))",
-            //   padding: 25,
-            //   height: "fit-content",
-            //   backdropFilter: "blur(5px)",
-            //   borderRadius: 10,
-            //   transition: "background-color 0.3s ease",
-            //   "&:hover": {
-            //     backgroundColor: "red"
-            //   }
-            // }}
-          >
+          <Box className="card">
             <Typography variant="h4" color={theme.palette.text.main}>
               Introducing new,
             </Typography>
@@ -93,7 +79,7 @@ function Index() {
                 </Grid>
                 <Grid item xs>
                   <Typography variant="p2">
-                    Welcome to our new landing page! We're excited to introduce you to our latest
+                    Welcome to our new landing page! We are excited to introduce you to our latest
                     website template, built on the cutting-edge technology of Next.js and Material
                     UI.
                   </Typography>
@@ -108,19 +94,6 @@ function Index() {
                   <Typography variant="p2">
                     Our team has put a lot of thought and effort into creating a template that not
                     only looks great but also delivers exceptional performance and functionality.
-                    {/* Our team has put a lot of thought and effort into creating a{" "}
-                    <Box fontWeight="fontWeightBold" component="span">
-                      template{" "}
-                    </Box>
-                    that not only looks great but also{" "}
-                    <Box fontWeight="fontWeightBold" component="span">
-                      delivers exceptional performance and functionality.
-                    </Box>
-                    We're proud to say that we've developed this template{" "}
-                    <Box fontWeight="fontWeightBold" component="span">
-                      using our brand-new MVVM architecture,{" "}
-                    </Box>{" "}
-                    which stands for Model-View-ViewModel. */}
                   </Typography>
                 </Grid>
               </Grid>
@@ -130,7 +103,7 @@ function Index() {
                 </Grid>
                 <Grid item xs>
                   <Typography variant="p2">
-                    We'have developed this template using our brand-new MVVM architecture, which
+                    We have developed this template using our brand-new MVVM architecture, which
                     stands for Model-View-ViewModel.
                   </Typography>
                 </Grid>
@@ -154,16 +127,7 @@ function Index() {
             </Grid>
           </Box>
         </Grid>
-        <Grid container item xs={12} md={5} justifyContent="center" alignItems="center">
-          {/* <Image
-              layout="responsive"
-              alt="template"
-              src={"/images/backgrounds/landingPage/hero-background.svg.svg"}
-              style={{ paddingTop: 50 }}
-              height={100}
-              width={100}
-            /> */}
-        </Grid>
+        <Grid container item xs={12} md={5} justifyContent="center" alignItems="center"></Grid>
       </Grid>
       <Grid container item xs={12} md={6} alignItems="center">
         <Box
@@ -183,7 +147,7 @@ function Index() {
               <Grid item xs>
                 <Typography variant="p2">
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                  Ipsum has been the industry standard dummy text ever since the 1500s, when an
                   unknown printer took a galley of type and scrambled it to make a type specimen
                   book. It has survived not only five centuries, but also the leap into electronic
                   typesetting, remaining essentially unchanged. It was popularised in the 1960s with
@@ -201,26 +165,13 @@ function Index() {
               <Grid item xs>
                 <Typography variant="p2">
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                  Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                  Ipsum has been the industry standard dummy text ever since the 1500s, when an
                   unknown printer took a galley of type and scrambled it to make a type specimen
                   book. It has survived not only five centuries, but also the leap into electronic
                   typesetting, remaining essentially unchanged. It was popularised in the 1960s with
                   the release of Letraset sheets containing Lorem Ipsum passages, and more recently
                   with desktop publishing software like Aldus PageMaker including versions of Lorem
                   Ipsum.
-                  {/* Our team has put a lot of thought and effort into creating a{" "}
-                    <Box fontWeight="fontWeightBold" component="span">
-                      template{" "}
-                    </Box>
-                    that not only looks great but also{" "}
-                    <Box fontWeight="fontWeightBold" component="span">
-                      delivers exceptional performance and functionality.
-                    </Box>
-                    We're proud to say that we've developed this template{" "}
-                    <Box fontWeight="fontWeightBold" component="span">
-                      using our brand-new MVVM architecture,{" "}
-                    </Box>{" "}
-                    which stands for Model-View-ViewModel. */}
                 </Typography>
               </Grid>
             </Grid>

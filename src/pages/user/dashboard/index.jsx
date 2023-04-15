@@ -1,18 +1,17 @@
-import React from "react"
-import { Divider } from "@mui/material"
+import PrimaryHeader from "@local/components/primaryHeader"
+import { Grid } from "@mui/material"
 import Head from "next/head"
+import React from "react"
 import { getServerSideProps } from "./dashboard.server"
-function Dashboard(props) {
-  console.log(props.data, "props")
+function Dashboard() {
   return (
     <React.Fragment>
       <Head>
         <title>Dashboard</title>
       </Head>
-      <div>
-        <h2>Dashboard</h2>
-        <Divider />
-      </div>
+      <Grid container>
+        <PrimaryHeader title="Dashboard" />
+      </Grid>
     </React.Fragment>
   )
 }
