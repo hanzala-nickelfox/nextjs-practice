@@ -1,8 +1,9 @@
+import { useTheme } from "@emotion/react"
 import { MenuOptions } from "@local/constants/publicMenu"
 import { useIsLoggedIn } from "@local/hooks/state"
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt"
 import { AppBar, Box, Button, Grid, Toolbar, Typography } from "@mui/material"
 import Head from "next/head"
-import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
@@ -12,6 +13,7 @@ function Index() {
   const styles = useStyles()
   const router = useRouter()
   const isLoggedIn = useIsLoggedIn()
+  const theme = useTheme()
 
   const [btnLabel, setBtnLabel] = useState("Login")
 
@@ -34,7 +36,7 @@ function Index() {
         <title>{process.env.NEXT_PUBLIC_APP_NAME}</title>
       </Head>
       <AppBar component="nav" color="background">
-        <Toolbar>
+        <Toolbar style={{ padding: "0 3%" }}>
           <Typography
             variant="h3"
             component="div"
@@ -61,55 +63,169 @@ function Index() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={2} sx={styles.main}>
-        <Grid item xs={12}>
-          <Grid container>
-            <Grid item xs={12} md={7}>
-              <Grid item xs={12}>
-                <Grid item xs={12}>
-                  <Typography variant="h4" mt={1}>
-                    Lorem Ipsum
-                  </Typography>
+      <Grid container sx={styles.main} justifyContent="space-between">
+        <Grid container item xs={12} md={6} alignItems="center">
+          <Box
+            className="card"
+            // style={{
+            //   backgroundImage:
+            //     "linear-gradient(to right, rgba(255,255,255, 1), rgba(255,255,255, 0.1))",
+            //   padding: 25,
+            //   height: "fit-content",
+            //   backdropFilter: "blur(5px)",
+            //   borderRadius: 10,
+            //   transition: "background-color 0.3s ease",
+            //   "&:hover": {
+            //     backgroundColor: "red"
+            //   }
+            // }}
+          >
+            <Typography variant="h4" color={theme.palette.text.main}>
+              Introducing new,
+            </Typography>
+            <Typography variant="h2" mt={0} sx={{ lineHeight: 1 }} style={{ color: "#c6361c" }}>
+              MVVM Architecture.
+            </Typography>
+            <Grid item xs={12}>
+              <Grid container sx={{ mt: 1 }} spacing={1}>
+                <Grid item xs="auto">
+                  <ArrowRightAltIcon />
+                </Grid>
+                <Grid item xs>
                   <Typography variant="p2">
-                    In dictum non consectetur a erat nam at. Tellus at urna condimentum mattis
-                    pellentesque id. At urna condimentum mattis pellentesque id nibh. Tempor orci eu
-                    lobortis elementum nibh tellus. Parturient montes nascetur ridiculus mus mauris
-                    vitae ultricies.
+                    Welcome to our new landing page! We're excited to introduce you to our latest
+                    website template, built on the cutting-edge technology of Next.js and Material
+                    UI.
                   </Typography>
                 </Grid>
-                <Grid item xs={12} m={4}>
-                  <Grid container justifyContent="space-evenly">
-                    <Button variant="outlined" size="large">
-                      Try Now
-                    </Button>
-                    <Button variant="outlined" size="large" color="secondary">
-                      Know More
-                    </Button>
-                  </Grid>
+              </Grid>
+
+              <Grid container sx={{ mt: 1 }} spacing={1}>
+                <Grid item xs="auto">
+                  <ArrowRightAltIcon />
                 </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="h4">Lorem Ipsum</Typography>
+                <Grid item xs>
                   <Typography variant="p2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua. Tristique magna sit amet purus
-                    gravida quis blandit turpis cursus. Dignissim diam quis enim lobortis
-                    scelerisque fermentum dui faucibus in. Sagittis vitae et leo duis ut diam quam
-                    nulla porttitor. Lectus arcu bibendum at varius vel pharetra vel turpis nunc.
-                    Purus sit amet volutpat consequat mauris. Massa enim nec dui nunc mattis enim ut
-                    tellus elementum. Condimentum mattis pellentesque id nibh tortor id aliquet.
-                    Nunc pulvinar sapien et ligula ullamcorper malesuada proin. Etiam sit amet nisl
-                    purus in mollis. Sed augue lacus viverra vitae congue.
+                    Our team has put a lot of thought and effort into creating a template that not
+                    only looks great but also delivers exceptional performance and functionality.
+                    {/* Our team has put a lot of thought and effort into creating a{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      template{" "}
+                    </Box>
+                    that not only looks great but also{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      delivers exceptional performance and functionality.
+                    </Box>
+                    We're proud to say that we've developed this template{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      using our brand-new MVVM architecture,{" "}
+                    </Box>{" "}
+                    which stands for Model-View-ViewModel. */}
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container sx={{ mt: 1 }} spacing={1}>
+                <Grid item xs="auto">
+                  <ArrowRightAltIcon />
+                </Grid>
+                <Grid item xs>
+                  <Typography variant="p2">
+                    We'have developed this template using our brand-new MVVM architecture, which
+                    stands for Model-View-ViewModel.
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid container sx={{ mt: 1 }} spacing={1}>
+                <Grid item xs="auto">
+                  <ArrowRightAltIcon />
+                </Grid>
+                <Grid item xs>
+                  <Typography variant="p2">
+                    <Box fontWeight="fontWeightBold" component="span">
+                      Our new architecture
+                    </Box>{" "}
+                    separates the concerns of the different components of the website, which{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      makes the code more organized and easier to maintain.
+                    </Box>
                   </Typography>
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={12} md={5}>
-              <Grid container justifyContent="center" p={4}>
-                <Image alt="template" src={"/images/icons/mockup.png"} height={256} width={256} />
+          </Box>
+        </Grid>
+        <Grid container item xs={12} md={5} justifyContent="center" alignItems="center">
+          {/* <Image
+              layout="responsive"
+              alt="template"
+              src={"/images/backgrounds/landingPage/hero-background.svg.svg"}
+              style={{ paddingTop: 50 }}
+              height={100}
+              width={100}
+            /> */}
+        </Grid>
+      </Grid>
+      <Grid container item xs={12} md={6} alignItems="center">
+        <Box
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255, 1), rgba(255,255,255, 0.3))",
+            padding: 25,
+            height: "fit-content",
+            backdropFilter: "blur(1px)",
+            borderRadius: 10
+          }}>
+          <Grid item xs={12}>
+            <Grid container sx={{ mt: 1 }} spacing={1}>
+              <Grid item xs="auto">
+                <ArrowRightAltIcon />
+              </Grid>
+              <Grid item xs>
+                <Typography variant="p2">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                  Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make a type specimen
+                  book. It has survived not only five centuries, but also the leap into electronic
+                  typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                  with desktop publishing software like Aldus PageMaker including versions of Lorem
+                  Ipsum.
+                </Typography>
+              </Grid>
+            </Grid>
+
+            <Grid container sx={{ mt: 1 }} spacing={1}>
+              <Grid item xs="auto">
+                <ArrowRightAltIcon />
+              </Grid>
+              <Grid item xs>
+                <Typography variant="p2">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                  Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make a type specimen
+                  book. It has survived not only five centuries, but also the leap into electronic
+                  typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+                  with desktop publishing software like Aldus PageMaker including versions of Lorem
+                  Ipsum.
+                  {/* Our team has put a lot of thought and effort into creating a{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      template{" "}
+                    </Box>
+                    that not only looks great but also{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      delivers exceptional performance and functionality.
+                    </Box>
+                    We're proud to say that we've developed this template{" "}
+                    <Box fontWeight="fontWeightBold" component="span">
+                      using our brand-new MVVM architecture,{" "}
+                    </Box>{" "}
+                    which stands for Model-View-ViewModel. */}
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Grid>
     </React.Fragment>
   )
