@@ -1,13 +1,23 @@
 export const useStyles = () => {
   return {
     main: {
-      // marginTop: "6%",
-      minHeight: "100vh",
+      minHeight: "850px",
       backgroundImage:
-        "linear-gradient(to right, rgba(47, 46, 65, 0.3), rgba(47, 46, 65, 0)), url('images/backgrounds/landingPage/background.jpg')",
-      padding: "3%",
-      backgroundSize: "100% 100%",
-      backgroundAttachment: "fixed"
+        "url('images/backgrounds/landingPage/background.jpg')",
+      padding: "2% 3%",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundAttachment: "fixed",
+      borderBottomLeftRadius: "50% 5%",
+      borderBottomRightRadius: "50% 3%",
+
+
+    },
+    updateWrapper:{
+      backgroundColor: "#fff",
+      padding: 2,
+      borderRadius: 2,
+      fontSize: 10
     }
   }
 }

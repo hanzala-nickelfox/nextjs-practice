@@ -1,5 +1,5 @@
-import * as React from "react"
-import PropTypes from "prop-types"
+import MenuIcon from "@mui/icons-material/Menu"
+import { Grid } from "@mui/material"
 import Box from "@mui/material/Box"
 import CssBaseline from "@mui/material/CssBaseline"
 import Divider from "@mui/material/Divider"
@@ -9,10 +9,10 @@ import List from "@mui/material/List"
 import ListItem from "@mui/material/ListItem"
 import ListItemButton from "@mui/material/ListItemButton"
 import ListItemText from "@mui/material/ListItemText"
-import MenuIcon from "@mui/icons-material/Menu"
 import Toolbar from "@mui/material/Toolbar"
 import Typography from "@mui/material/Typography"
-import { Grid } from "@mui/material"
+import PropTypes from "prop-types"
+import * as React from "react"
 
 const drawerWidth = 240
 const navItems = ["Home", "About", "Contact"]

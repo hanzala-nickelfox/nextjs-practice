@@ -36,32 +36,78 @@ a {
   outline: 1px solid #ff0040;
 }
 .card {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.1));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.5));
   padding: 25px;
   height: fit-content;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   border-radius: 10px;
-  transition: background-color 0.3s ease;
-  animation: fadeInAnimation ease 1s;
+  transition: background-color 0.5s ease-in-out;
+  animation: fadeInAnimation ease 1.3s;
   animation-iteration-count: 1;
-  left: -100px;
+  margin-top: 20%;
 }
 .card:hover {
   background-color: #ffffff;
 }
+.cardButtonContainer {
+  max-width: 800px;
+}
+.underlined {
+  position: relative;
+  margin-right: 1rem;
+}
+.underlined:after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0px;
+  height: 7px;
+  width: 140px;
+  border: solid 2px #cb1829;
+  border-color: #cb1829 transparent transparent transparent;
+  border-radius: 30%;
+}
+.animateText {
+  background-size: 200%;
+  background-image: linear-gradient(45deg,#c6361c 0,#c6361c 35%,#4C8BFC 66%,#121E50 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    animation: glow 10s linear infinite;
+    margin-top: 7px;
+}
+@keyframes glow {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
-    scale: 0.5;
-    margin-right: 100px;
+    scale: 0.8;
+    margin-right: 200px;
   }
-  50% {
-    /* scale: 1.05; */
-    margin-right: 100px;
-  }
+
   100% {
     opacity: 1;
     scale: 1;
     margin-right: 0px;
   }
+}
+.smallCard {
+  box-shadow: 0 0 25px 0 rgba(0,0,0,0.1);
+  padding: 50px 30px;
+  transition: all ease-in-out .4s;
+  background: #fff;
+  margin: 0px 10px 50px 10px; 
+  /* height: 250px; */
+  max-height: auto;
+}
+.smallCard:hover {
+  transform: translateY(-10px);
 }

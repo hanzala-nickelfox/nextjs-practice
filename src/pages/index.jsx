@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { useEffect, useState } from "react"
 import { useStyles } from "./indexStyles"
+import Image from "next/image"
 
 function Index() {
   const styles = useStyles()
@@ -64,12 +65,17 @@ function Index() {
         </Toolbar>
       </AppBar>
       <Grid container sx={styles.main} justifyContent="space-between">
-        <Grid container item xs={12} md={6} alignItems="center">
-          <Box className="card">
-            <Typography variant="h4" color={theme.palette.text.main}>
+        <Grid item xs={12} md={6} alignItems="center">
+          <Box item xs={12} className="card">
+            <Typography variant="h4" color={theme.palette.text.main} className="underlined">
               Introducing new,
             </Typography>
-            <Typography variant="h2" mt={0} sx={{ lineHeight: 1 }} style={{ color: "#c6361c" }}>
+            <Typography
+              variant="h2"
+              mt={0}
+              sx={{ lineHeight: 1 }}
+              className="animateText"
+              style={{ color: "#c6361c" }}>
               MVVM Architecture.
             </Typography>
             <Grid item xs={12}>
@@ -124,12 +130,85 @@ function Index() {
                   </Typography>
                 </Grid>
               </Grid>
+              <Grid container sx={{ mt: 1 }} spacing={1}>
+                <Grid item xs="auto">
+                  <ArrowRightAltIcon />
+                </Grid>
+                <Grid item xs>
+                  <Typography variant="p2">
+                    Want to learn more! checkout our{" "}
+                    <Link href="https://github.com/Nickelfox/next-web" style={{ color: "#c5001a" }}>
+                      click here
+                    </Link>
+                  </Typography>
+                </Grid>
+              </Grid>
             </Grid>
           </Box>
         </Grid>
-        <Grid container item xs={12} md={5} justifyContent="center" alignItems="center"></Grid>
+        <Grid container item xs={12} md={5} justifyContent="flex-end" alignItems="flex-end">
+          <Grid item sx={styles.updateWrapper}>
+            <Typography variant="body2">
+              <Box fontWeight="fontWeightBold" component="span" sx={{ color: "#c5001a" }}>
+                Update:{" "}
+              </Box>
+              Fuel Your Project With Our New Architecture
+            </Typography>
+          </Grid>
+        </Grid>
       </Grid>
-      <Grid container item xs={12} md={6} alignItems="center">
+      <Typography
+        style={{ marginTop: 50 }}
+        variant="h2"
+        mt={0}
+        sx={{ lineHeight: 1, textAlign: "center" }}
+        className="animateText">
+        Discover New Features
+      </Typography>
+      <Grid
+        container
+        item
+        xs={12}
+        alignItems="center"
+        justifyContent="center"
+        style={{ margin: "20px 0px" }}>
+        <Grid item xs={3} className="smallCard">
+          <Image
+            src={"/images/icons/landingPageIcons/maintenance.png"}
+            alt="maintain"
+            width={55}
+            height={50}
+          />
+          <Typography
+          color={theme.palette.text.main}
+            style={{ marginTop: 10 }}
+            variant="h4"
+            mt={0}
+            sx={{ lineHeight: 1 }}
+            >
+            Easy to Understand.
+          </Typography>
+          Project Become Easier To Maintain
+        </Grid>
+        <Grid item xs={3} className="smallCard">
+          <Image
+            src={"/images/icons/landingPageIcons/maintenance.png"}
+            alt="maintain"
+            width={55}
+            height={50}
+          />
+          <Typography
+          color={theme.palette.text.main}
+            style={{ marginTop: 10 }}
+            variant="h4"
+            mt={0}
+            sx={{ lineHeight: 1 }}
+            >
+            Separation of Concerns.
+          </Typography>
+          MVVM separates the user interface (View) from the business logic (ViewModel) and the data (Model). This separation helps to reduce code complexity and makes it easier to maintain and update the application.
+        </Grid>
+
         <Box
           style={{
             backgroundImage:
