@@ -6,9 +6,11 @@ import { Provider as ReduxProvider } from "react-redux"
 import PublicLayout from "@local/layouts/publicLayout"
 import PrivateLayout from "@local/layouts/privateLayout"
 import { defaultTheme } from "@local/themes/defaultTheme"
-import { store } from "@local/redux/store"
 import { CookiesProvider } from "react-cookie"
 import CommonLayout from "@local/layouts/commonLayout"
+import { store } from "@local/redux/store"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function MyApp({ Component, pageProps }) {
   const currentTheme = createTheme(defaultTheme)
@@ -25,6 +27,7 @@ function MyApp({ Component, pageProps }) {
           <Wrapper>
             <Component {...pageProps} />
           </Wrapper>
+          <ToastContainer />
         </ThemeProvider>
       </ReduxProvider>
     </CookiesProvider>

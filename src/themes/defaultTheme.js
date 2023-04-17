@@ -15,12 +15,12 @@ export const defaultTheme = {
       default: "#FFFFFF"
     },
     text: {
-      main: "#111111",
+      main: "#2f2e41",
       white: "#EEEEEE"
     }
   },
   typography: {
-    fontFamily: "Roboto",
+    fontFamily: "Ubuntu",
     h1: {
       fontSize: 54,
       lineHeight: 74 / 34,

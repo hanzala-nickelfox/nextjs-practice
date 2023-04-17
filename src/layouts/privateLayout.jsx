@@ -1,22 +1,21 @@
-import * as React from "react"
-import { styled } from "@mui/material/styles"
+import { DashboardMenus } from "@local/constants/dashboardMenu"
+import { useIsLoggedIn } from "@local/hooks/state"
+import LogoutIcon from "@mui/icons-material/Logout"
 import {
   Box,
+  Divider,
   Drawer,
   List,
-  Typography,
+  ListItemButton,
   ListItemIcon,
-  Divider,
   ListItemText,
-  ListItemButton
+  Typography
 } from "@mui/material"
-import { DashboardMenus } from "@local/constants/dashboardMenu"
-import { useStyles } from "./privateLayoutStyles"
-import LogoutIcon from "@mui/icons-material/Logout"
-import { useCookies } from "react-cookie"
-import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
+import { styled } from "@mui/material/styles"
 import { useRouter } from "next/router"
-import { useIsLoggedIn } from "@local/hooks/state"
+import * as React from "react"
+import { usePrivateLayoutController } from "./privateLayout.controller"
+import { useStyles } from "./privateLayoutStyles"
 
 const drawerWidth = 270
 
@@ -55,7 +54,7 @@ export default function PrivateLayout({ children }) {
   const currentRoute = router.pathname
   const isLoggedIn = useIsLoggedIn()
   // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie, removeCookie] = useCookies([CookieKeys.Auth])
+  const { handleLogout } = usePrivateLayoutController(children)
 
   React.useEffect(() => {
     window.scrollTo(0, 0)
@@ -66,10 +65,6 @@ export default function PrivateLayout({ children }) {
       router.replace("/auth/login", "/auth/login")
     }
   }, [isLoggedIn, router])
-
-  const handleLogout = () => {
-    removeCookie(CookieKeys.Auth, CookieOptions)
-  }
 
   const navigate = (route) => {
     router.push(route)

@@ -4,29 +4,43 @@
  */
 
 import { Cookies } from "react-cookie"
-import { API } from "./endpoints"
-import { APIConfig } from "./serverConfig"
+import { API } from "../config/endpoints"
+import { APIConfig } from "../config/serverConfig"
 import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 
 export async function refreshAuthToken(refreshToken) {
   try {
-    const { endpoint, version, method } = API.AUTH.REFRESH_TOKEN
-    const url = `${APIConfig.API_URL}/${version}${endpoint}`
+    const { method } = API.AUTH.REFRESH_TOKEN
+    const url = urlBuilder(API.AUTH.REFRESH_TOKEN, {})
+
     const response = await fetch(url, {
       method,
       headers: { "Content-Type": APIConfig.CONTENT_TYPE.JSON },
-      body: JSON.stringify({ refreshToken })
+      body: JSON.stringify({ refresh: refreshToken })
     }).then((res) => res.json())
     const cookies = new Cookies()
     if (response.success) {
       cookies.set(CookieKeys.Auth, response.data?.token, CookieOptions)
-    } else {
-      cookies.remove(CookieKeys.Auth, CookieOptions)
     }
-    return true
+    return response.success
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err)
     return false
   }
+}
+
+function urlBuilder(router, params) {
+  let uri = ""
+  if (typeof router.version === "string") {
+    uri = `/${router.version}`
+  }
+  uri = uri.concat(router.endpoint)
+  // all params in form of uri/id1/id2/id3
+  if (Array.isArray(params)) {
+    for (let key of params) {
+      uri = uri.concat("/", key)
+    }
+  }
+  return uri
 }

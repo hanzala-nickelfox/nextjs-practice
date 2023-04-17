@@ -1,30 +1,23 @@
-import React, { useState } from "react"
-import { Typography, TextField, Grid, Divider, Box, InputLabel } from "@mui/material"
-import { Formik } from "formik"
-import { useStyles } from "../commonStyles"
-import { LoadingButton } from "@mui/lab"
-import LockResetIcon from "@mui/icons-material/LockReset"
+import FormField from "@local/components/FormField"
+import { useForgotPasswordController } from "@local/controllers/auth-controllers/forgot-password.controller"
 import { FPValidator } from "@local/helpers/validators/forgotPassword"
-import { useRouter } from "next/router"
-import Head from "next/head"
+import { useStyles } from "@local/styles/auth/commonStyles"
+import LockResetIcon from "@mui/icons-material/LockReset"
+import RefreshIcon from "@mui/icons-material/Refresh"
+import { LoadingButton } from "@mui/lab"
+import { Box, Divider, Grid, Typography } from "@mui/material"
+import { Formik } from "formik"
+import React from "react"
 
 function ForgotPassword() {
   const styles = useStyles()
-  const [showLoader, setShowLoader] = useState(false)
-  const navigate = useRouter()
 
-  const resetPassword = async (values) => {
-    setShowLoader(true)
-    // eslint-disable-next-line no-console
-    console.log(values)
-  }
+  const { showLoader, sendEmail, navigateToLogin, isEmailSent, formikRef } =
+    useForgotPasswordController()
 
-  return (
-    <React.Fragment>
-      <Head>
-        <title>{`${process.env.NEXT_PUBLIC_APP_NAME} | Reset Password`}</title>
-      </Head>
-      <Box sx={styles.container}>
+  return !isEmailSent ? (
+    <Box sx={styles.container}>
+      <React.Fragment>
         <Typography align="left" variant="h3">
           Reset Your Password
         </Typography>
@@ -34,52 +27,37 @@ function ForgotPassword() {
         <Grid sx={styles.form} container spacing={2}>
           <Divider />
           <Formik
+            innerRef={formikRef}
             validateOnMount
             initialValues={FPValidator.initialValues}
             validationSchema={FPValidator.validationSchema}
-            onSubmit={resetPassword}>
-            {({ isValid, handleSubmit, values, handleChange, handleBlur, touched, errors }) => (
+            onSubmit={sendEmail}>
+            {(formik) => (
               <React.Fragment>
                 <Grid item xs={12}>
-                  <InputLabel sx={styles.label} htmlFor="email">
-                    Email ID*
-                  </InputLabel>
-                  <TextField
-                    size="small"
-                    sx={styles.formField}
+                  <FormField
+                    label={" Email ID"}
                     placeholder="Enter Your Email"
-                    name="email"
-                    inputProps={{ style: { fontSize: 14, padding: 14 } }}
-                    InputLabelProps={{ style: { fontSize: 14 } }}
-                    value={values.email}
-                    variant="outlined"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    helperText={touched.email ? errors.email : ""}
-                    error={touched.email && Boolean(errors.email)}
-                    type="email"
-                    fullWidth
-                    margin="normal"
+                    formik={formik}
+                    name={"email"}
+                    required
+                    type={"email"}
                   />
                 </Grid>
-
                 <Grid sx={styles.buttonContainer} item xs={12}>
                   <LoadingButton
                     type="submit"
-                    disabled={!isValid || showLoader}
+                    disabled={!formik.isValid || showLoader}
                     variant="contained"
                     sx={styles.submitBtn}
                     size="large"
-                    onClick={handleSubmit}
+                    onClick={formik.handleSubmit}
                     loading={showLoader}
                     loadingPosition="start"
                     startIcon={<LockResetIcon />}>
                     Send Email
                   </LoadingButton>
-                  <Typography
-                    onClick={() => navigate.push("/auth/login")}
-                    sx={styles.forgotPassword}
-                    variant="c3">
+                  <Typography onClick={navigateToLogin} sx={styles.forgotPassword} variant="c3">
                     Back To Login
                   </Typography>
                 </Grid>
@@ -87,8 +65,33 @@ function ForgotPassword() {
             )}
           </Formik>
         </Grid>
-      </Box>
-    </React.Fragment>
+      </React.Fragment>
+    </Box>
+  ) : (
+    <Box sx={styles.container}>
+      <Typography align="left" variant="h3">
+        Email Sent SuccussFully
+      </Typography>
+      <Typography sx={styles.topLabel} variant="subtitle">
+        Please check your email to reset password, If not received please click below to resent the
+        email.
+      </Typography>
+      <LoadingButton
+        type="submit"
+        disabled={showLoader}
+        variant="contained"
+        sx={styles.resendBtn}
+        size="large"
+        onClick={formikRef?.current?.handleSubmit}
+        loading={showLoader}
+        loadingPosition="start"
+        startIcon={<RefreshIcon />}>
+        Re-send Email
+      </LoadingButton>
+      <Typography onClick={navigateToLogin} sx={styles.forgotPassword} variant="c3">
+        Back To Login
+      </Typography>
+    </Box>
   )
 }
 

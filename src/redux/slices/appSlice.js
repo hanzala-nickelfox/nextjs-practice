@@ -19,6 +19,9 @@ export const appSlice = createSlice({
       state.user = {}
       state.authToken = null
       state.isLogged = false
+    },
+    observe: (state) => {
+      state.observe = new Date().getTime()
     }
   }
 })

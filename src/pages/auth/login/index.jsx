@@ -1,49 +1,33 @@
-import React, { useState } from "react"
-import {
-  Typography,
-  TextField,
-  Grid,
-  Divider,
-  Box,
-  InputLabel,
-  InputAdornment,
-  IconButton
-} from "@mui/material"
-import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { Formik } from "formik"
-import { useStyles } from "../commonStyles"
-import { LoadingButton } from "@mui/lab"
-import LockOpenIcon from "@mui/icons-material/LockOpen"
-import { useCookies } from "react-cookie"
+import useLoginController from "@local/controllers/auth-controllers/login.controller"
 import { LoginValidator } from "@local/helpers/validators/login"
-import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
-import { useRouter } from "next/router"
+import { Visibility, VisibilityOff } from "@mui/icons-material"
+import LockOpenIcon from "@mui/icons-material/LockOpen"
+import { LoadingButton } from "@mui/lab"
+import {
+  Box,
+  Divider,
+  Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  TextField,
+  Typography
+} from "@mui/material"
+import { Formik } from "formik"
 import Head from "next/head"
-import { AuthService } from "@local/network/authService"
+import { useRouter } from "next/router"
+import React from "react"
+import { useStyles } from "@local/styles/auth/commonStyles"
 
 const Login = () => {
+  const { showPassword, showLoader, togglePasswordVisibility, userLogin, navigateToSignUp } =
+    useLoginController()
+
   const styles = useStyles()
-  const [showPassword, setShowPassword] = useState(false)
-  const [showLoader, setShowLoader] = useState(false)
+
   // eslint-disable-next-line no-unused-vars
-  const [cookies, setCookie] = useCookies(["auth-token"])
 
   const navigate = useRouter()
-
-  const togglePasswordVisiblity = () => {
-    setShowPassword((prev) => !prev)
-  }
-
-  const userLogin = async (values) => {
-    setShowLoader(true)
-    const response = await AuthService.loginByEmail(values)
-    setShowLoader(false)
-    if (response.success) {
-      setCookie(CookieKeys.Auth, response.data.token, CookieOptions)
-    } else {
-      // TODO: show error toast
-    }
-  }
 
   return (
     <React.Fragment>
@@ -112,7 +96,7 @@ const Login = () => {
                         <InputAdornment position="end">
                           <IconButton
                             aria-label="toggle password visibility"
-                            onClick={togglePasswordVisiblity}>
+                            onClick={togglePasswordVisibility}>
                             {showPassword ? <Visibility /> : <VisibilityOff />}
                           </IconButton>
                         </InputAdornment>
@@ -141,6 +125,11 @@ const Login = () => {
                     sx={styles.forgotPassword}
                     variant="c3">
                     Forgot Password?
+                  </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography onClick={navigateToSignUp} sx={styles.forgotPassword} variant="c3">
+                    Create a new account!
                   </Typography>
                 </Grid>
               </React.Fragment>

@@ -6,6 +6,38 @@ export const useStyles = () => {
   const theme = useTheme()
 
   return {
+    container: {
+      maxWidth: 1920,
+      margin: "0 auto",
+      display: "flex",
+      justifyContent: "center",
+      flexWrap: "wrap"
+    },
+    leftColumn: {
+      width: "100%",
+      minWidth: 261,
+      display: "none",
+      // flex: 1,
+      ["@media (min-width:1080px)"]: {
+        display: "block",
+        maxWidth: "none",
+        width: "auto"
+      }
+    },
+    rightColumn: {
+      position: "relative",
+      padding: "0px 15px",
+      marginTop: "85px",
+      width: "400px",
+      flex: 1,
+
+      [theme.breakpoints.down("md")]: {
+        padding: "0px 10px"
+      }
+    },
+
+    // Sidebar styles
+
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
