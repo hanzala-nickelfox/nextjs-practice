@@ -180,12 +180,11 @@ function Index() {
             height={50}
           />
           <Typography
-          color={theme.palette.text.main}
+            color={theme.palette.text.main}
             style={{ marginTop: 10 }}
             variant="h4"
             mt={0}
-            sx={{ lineHeight: 1 }}
-            >
+            sx={{ lineHeight: 1 }}>
             Easy to Understand.
           </Typography>
           Project Become Easier To Maintain
@@ -198,15 +197,16 @@ function Index() {
             height={50}
           />
           <Typography
-          color={theme.palette.text.main}
+            color={theme.palette.text.main}
             style={{ marginTop: 10 }}
             variant="h4"
             mt={0}
-            sx={{ lineHeight: 1 }}
-            >
+            sx={{ lineHeight: 1 }}>
             Separation of Concerns.
           </Typography>
-          MVVM separates the user interface (View) from the business logic (ViewModel) and the data (Model). This separation helps to reduce code complexity and makes it easier to maintain and update the application.
+          MVVM separates the user interface (View) from the business logic (ViewModel) and the data
+          (Model). This separation helps to reduce code complexity and makes it easier to maintain
+          and update the application.
         </Grid>
 
         <Box
