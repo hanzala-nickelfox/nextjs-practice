@@ -1,23 +1,23 @@
-import React from "react"
-import {
-  Typography,
-  TextField,
-  Grid,
-  Divider,
-  Box,
-  InputLabel,
-  InputAdornment,
-  IconButton
-} from "@mui/material"
-import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { Formik } from "formik"
-import { useStyles } from "../commonStyles"
-import { LoadingButton } from "@mui/lab"
-import LockOpenIcon from "@mui/icons-material/LockOpen"
+import useLoginController from "@local/controllers/auth-controllers/login.controller"
 import { LoginValidator } from "@local/helpers/validators/login"
-import { useRouter } from "next/router"
+import { Visibility, VisibilityOff } from "@mui/icons-material"
+import LockOpenIcon from "@mui/icons-material/LockOpen"
+import { LoadingButton } from "@mui/lab"
+import {
+  Box,
+  Divider,
+  Grid,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  TextField,
+  Typography
+} from "@mui/material"
+import { Formik } from "formik"
 import Head from "next/head"
-import useLoginController from "./login.controller"
+import { useRouter } from "next/router"
+import React from "react"
+import { useStyles } from "@local/styles/auth/commonStyles"
 
 const Login = () => {
   const { showPassword, showLoader, togglePasswordVisibility, userLogin, navigateToSignUp } =

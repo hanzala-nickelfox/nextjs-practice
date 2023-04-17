@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
-import { useResetPasswordModel } from "./reset-password.model"
 import { useRouter } from "next/router"
+import { useResetPasswordModel } from "@local/models/auth-models/reset-password.model"
 
 export const useResetPasswordController = () => {
   const [showPassword, setShowPassword] = useState(false)

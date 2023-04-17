@@ -1,14 +1,14 @@
 import { Box, Button, CardMedia, Grid, InputLabel, Typography } from "@mui/material"
 import { Formik, Form } from "formik"
 import React from "react"
-import { useSignupController } from "./signup.controller"
-import { useStyles } from "../commonStyles"
+import { useStyles } from "@local/styles/auth/commonStyles"
 import "react-phone-number-input/style.css"
 import PhoneInput, { getCountryCallingCode } from "react-phone-number-input"
 import { LoadingButton } from "@mui/lab"
 import LockOpenIcon from "@mui/icons-material/LockOpen"
 import FormField from "@local/components/FormField"
 import { SignUpValidator } from "@local/helpers/validators/signup"
+import { useSignupController } from "@local/controllers/auth-controllers/signup.controller"
 
 const SignUp = () => {
   const styles = useStyles()

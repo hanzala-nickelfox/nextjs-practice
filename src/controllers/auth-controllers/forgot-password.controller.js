@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import { useRef, useState } from "react"
-import { useForgotPasswordModel } from "./forgot-password.model"
+import { useForgotPasswordModel } from "../../models/auth-models/forgot-password.model"
 
 export const useForgotPasswordController = () => {
   const [showPassword, setShowPassword] = useState(false)

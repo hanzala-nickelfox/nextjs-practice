@@ -1,12 +1,12 @@
-import React from "react"
-import { Typography, Grid, Divider, Box } from "@mui/material"
-import { Formik } from "formik"
-import { useStyles } from "../commonStyles"
-import { LoadingButton } from "@mui/lab"
-import LockResetIcon from "@mui/icons-material/LockReset"
-import { RPValidator } from "@local/helpers/validators/forgotPassword"
 import FormField from "@local/components/FormField"
-import { useResetPasswordController } from "./reset-password.controller"
+import { useResetPasswordController } from "@local/controllers/auth-controllers/reset-password.controller"
+import { RPValidator } from "@local/helpers/validators/forgotPassword"
+import LockResetIcon from "@mui/icons-material/LockReset"
+import { LoadingButton } from "@mui/lab"
+import { Box, Divider, Grid, Typography } from "@mui/material"
+import { Formik } from "formik"
+import React from "react"
+import { useStyles } from "@local/styles/auth/commonStyles"
 
 function ResetPassword() {
   const styles = useStyles()

@@ -2,8 +2,8 @@ import { useState } from "react"
 import { CookieKeys, CookieOptions } from "@local/constants/cookieKeys"
 
 import { useCookies } from "react-cookie"
-import { useLoginModel } from "./login.model"
 import { useRouter } from "next/router"
+import { useLoginModel } from "@local/models/auth-models/login.model"
 
 const useLoginController = () => {
   const router = useRouter()

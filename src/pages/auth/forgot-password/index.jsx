@@ -1,15 +1,13 @@
-import React from "react"
-import { Typography, Grid, Divider, Box } from "@mui/material"
-import { Formik } from "formik"
-import { useStyles } from "../commonStyles"
-import { LoadingButton } from "@mui/lab"
-import LockResetIcon from "@mui/icons-material/LockReset"
-
-import { useForgotPasswordController } from "./forgot-password.controller"
-
-import RefreshIcon from "@mui/icons-material/Refresh"
-import { FPValidator } from "@local/helpers/validators/forgotPassword"
 import FormField from "@local/components/FormField"
+import { useForgotPasswordController } from "@local/controllers/auth-controllers/forgot-password.controller"
+import { FPValidator } from "@local/helpers/validators/forgotPassword"
+import { useStyles } from "@local/styles/auth/commonStyles"
+import LockResetIcon from "@mui/icons-material/LockReset"
+import RefreshIcon from "@mui/icons-material/Refresh"
+import { LoadingButton } from "@mui/lab"
+import { Box, Divider, Grid, Typography } from "@mui/material"
+import { Formik } from "formik"
+import React from "react"
 
 function ForgotPassword() {
   const styles = useStyles()

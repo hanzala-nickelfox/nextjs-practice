@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useSignUpModel } from "./signup.model"
+import { useSignUpModel } from "../../models/auth-models/signup.model"
 import UserImg from "public/images/backgrounds/DefaultImg.png"
 import { useRouter } from "next/router"
 import { useUserSession } from "@local/hooks/userSession"
