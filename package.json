@@ -16,7 +16,7 @@
     "serve:qa": "next start -p 3002",
     "serve:staging": "next start -p 3003",
     "serve:prod": "next start -p 3004",
-    "prettier:write": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\"",
+    "prettier:write": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md)\" --loglevel error",
     "lint": "next lint",
     "prepare": "husky install",
     "react-toastify": "^9.1.2",
